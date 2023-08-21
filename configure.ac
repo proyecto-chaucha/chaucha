@@ -1,13 +1,13 @@
 AC_PREREQ([2.69])
-define(_CLIENT_VERSION_MAJOR, 25)
+define(_CLIENT_VERSION_MAJOR, 4)
 define(_CLIENT_VERSION_MINOR, 0)
-define(_CLIENT_VERSION_BUILD, 0)
+define(_CLIENT_VERSION_BUILD, 1)
 define(_CLIENT_VERSION_RC, 0)
 define(_CLIENT_VERSION_IS_RELEASE, true)
 define(_COPYRIGHT_YEAR, 2023)
-define(_COPYRIGHT_HOLDERS,[The %s developers])
-define(_COPYRIGHT_HOLDERS_SUBSTITUTION,[[Bitcoin Core]])
-AC_INIT([Bitcoin Core],m4_join([.], _CLIENT_VERSION_MAJOR, _CLIENT_VERSION_MINOR, _CLIENT_VERSION_BUILD)m4_if(_CLIENT_VERSION_RC, [0], [], [rc]_CLIENT_VERSION_RC),[https://github.com/bitcoin/bitcoin/issues],[bitcoin],[https://bitcoincore.org/])
+define(_COPYRIGHT_HOLDERS,[%s])
+define(_COPYRIGHT_HOLDERS_SUBSTITUTION,[[Proyecto Chaucha]])
+AC_INIT([Chauchera],m4_join([.], _CLIENT_VERSION_MAJOR, _CLIENT_VERSION_MINOR, _CLIENT_VERSION_BUILD)m4_if(_CLIENT_VERSION_RC, [0], [], [rc]_CLIENT_VERSION_RC),[https://github.com/proyecto-chaucha/chaucha/issues],[chaucha],[https://chaucha.cl/])
 AC_CONFIG_SRCDIR([src/validation.cpp])
 AC_CONFIG_HEADERS([src/config/bitcoin-config.h])
 AC_CONFIG_AUX_DIR([build-aux])
@@ -29,17 +29,17 @@ if test -n "$PKG_CONFIG_LIBDIR"; then
   PKG_CONFIG="env PKG_CONFIG_LIBDIR=$PKG_CONFIG_LIBDIR $PKG_CONFIG"
 fi
 
-BITCOIN_DAEMON_NAME=bitcoind
-BITCOIN_GUI_NAME=bitcoin-qt
-BITCOIN_TEST_NAME=test_bitcoin
-BITCOIN_CLI_NAME=bitcoin-cli
-BITCOIN_TX_NAME=bitcoin-tx
-BITCOIN_UTIL_NAME=bitcoin-util
-BITCOIN_CHAINSTATE_NAME=bitcoin-chainstate
-BITCOIN_WALLET_TOOL_NAME=bitcoin-wallet
+BITCOIN_DAEMON_NAME=chauchad
+BITCOIN_GUI_NAME=chaucha-qt
+BITCOIN_TEST_NAME=test_chaucha
+BITCOIN_CLI_NAME=chaucha-cli
+BITCOIN_TX_NAME=chaucha-tx
+BITCOIN_UTIL_NAME=chaucha-util
+BITCOIN_CHAINSTATE_NAME=chaucha-chainstate
+BITCOIN_WALLET_TOOL_NAME=chaucha-wallet
 dnl Multi Process
-BITCOIN_MP_NODE_NAME=bitcoin-node
-BITCOIN_MP_GUI_NAME=bitcoin-gui
+BITCOIN_MP_NODE_NAME=chaucha-node
+BITCOIN_MP_GUI_NAME=chaucha-gui
 
 dnl Unless the user specified ARFLAGS, force it to be cr
 dnl This is also the default as-of libtool 2.4.7
