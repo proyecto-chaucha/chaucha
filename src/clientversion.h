@@ -42,6 +42,7 @@ std::string FormatFullVersion();
 std::string FormatSubVersion(const std::string& name, int nClientVersion, const std::vector<std::string>& comments);
 
 std::string CopyrightHolders(const std::string& strPrefix);
+std::string CopyrightCore(const std::string& strPrefix);
 
 /** Returns licensing information (for -version) */
 std::string LicenseInfo();
