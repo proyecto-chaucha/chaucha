@@ -8,12 +8,12 @@ import sys
 import tempfile
 
 BINARIES = [
-'src/bitcoind',
-'src/bitcoin-cli',
-'src/bitcoin-tx',
-'src/bitcoin-wallet',
-'src/bitcoin-util',
-'src/qt/bitcoin-qt',
+'src/chauchad',
+'src/chaucha-cli',
+'src/chaucha-tx',
+'src/chaucha-wallet',
+'src/chaucha-util',
+'src/qt/chaucha-qt',
 ]
 
 # Paths to external utilities.
