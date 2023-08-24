@@ -13,6 +13,7 @@ src/chaucha-chainstate
 src/chaucha-wallet
 src/test/fuzz/fuzz
 src/test/test_chaucha
+src/bench/bench_chaucha
 src/qt/test/test_chaucha-qt
 
 # autoreconf
