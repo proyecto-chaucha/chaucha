@@ -70,6 +70,7 @@ bench_bench_chaucha_LDADD = \
   $(EVENT_PTHREADS_LIBS) \
   $(EVENT_LIBS) \
   $(MINIUPNPC_LIBS) \
+  $(CRYPTO_LIBS) \
   $(NATPMP_LIBS)
 
 if ENABLE_ZMQ
