@@ -88,30 +88,8 @@ if BUILD_BITCOIND
   bin_PROGRAMS += chauchad
 endif
 
-if BUILD_BITCOIN_NODE
-  bin_PROGRAMS += chaucha-node
-endif
-
 if BUILD_BITCOIN_CLI
   bin_PROGRAMS += chaucha-cli
-endif
-
-if BUILD_BITCOIN_TX
-  bin_PROGRAMS += chaucha-tx
-endif
-
-if ENABLE_WALLET
-if BUILD_BITCOIN_WALLET
-  bin_PROGRAMS += chaucha-wallet
-endif
-endif
-
-if BUILD_BITCOIN_UTIL
-  bin_PROGRAMS += chaucha-util
-endif
-
-if BUILD_BITCOIN_CHAINSTATE
-  bin_PROGRAMS += chaucha-chainstate
 endif
 
 .PHONY: FORCE check-symbols check-security
@@ -781,12 +759,6 @@ chauchad_CXXFLAGS = $(chaucha_bin_cxxflags)
 chauchad_LDFLAGS = $(chaucha_bin_ldflags)
 chauchad_LDADD = $(LIBBITCOIN_NODE) $(chaucha_bin_ldadd)
 
-chaucha_node_SOURCES = $(chaucha_daemon_sources) init/bitcoin-node.cpp
-chaucha_node_CPPFLAGS = $(chaucha_bin_cppflags)
-chaucha_node_CXXFLAGS = $(chaucha_bin_cxxflags)
-chaucha_node_LDFLAGS = $(chaucha_bin_ldflags)
-chaucha_node_LDADD = $(LIBBITCOIN_NODE) $(chaucha_bin_ldadd) $(LIBBITCOIN_IPC) $(LIBMULTIPROCESS_LIBS)
-
 # bitcoin-cli binary #
 chaucha_cli_SOURCES = bitcoin-cli.cpp
 chaucha_cli_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(EVENT_CFLAGS)
@@ -806,83 +778,6 @@ chaucha_cli_LDADD = \
   $(LIBBITCOIN_CRYPTO)
 
 chaucha_cli_LDADD += $(EVENT_LIBS)
-#
-
-# bitcoin-tx binary #
-chaucha_tx_SOURCES = bitcoin-tx.cpp
-chaucha_tx_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
-chaucha_tx_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-chaucha_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS) $(PTHREAD_FLAGS)
-
-if TARGET_WINDOWS
-chaucha_tx_SOURCES += bitcoin-tx-res.rc
-endif
-
-chaucha_tx_LDADD = \
-  $(LIBUNIVALUE) \
-  $(LIBBITCOIN_COMMON) \
-  $(LIBBITCOIN_UTIL) \
-  $(CRYPTO_LIBS) \
-  $(LIBBITCOIN_CONSENSUS) \
-  $(LIBBITCOIN_CRYPTO) \
-  $(LIBSECP256K1)
-#
-
-# bitcoin-wallet binary #
-chaucha_wallet_SOURCES = bitcoin-wallet.cpp
-chaucha_wallet_SOURCES += init/bitcoin-wallet.cpp
-chaucha_wallet_CPPFLAGS = $(chaucha_bin_cppflags)
-chaucha_wallet_CXXFLAGS = $(chaucha_bin_cxxflags)
-chaucha_wallet_LDFLAGS = $(chaucha_bin_ldflags)
-chaucha_wallet_LDADD = \
-  $(LIBBITCOIN_WALLET_TOOL) \
-  $(LIBBITCOIN_WALLET) \
-  $(LIBBITCOIN_COMMON) \
-  $(LIBBITCOIN_UTIL) \
-  $(LIBUNIVALUE) \
-  $(CRYPTO_LIBS) \
-  $(LIBBITCOIN_CONSENSUS) \
-  $(LIBBITCOIN_CRYPTO) \
-  $(LIBSECP256K1) \
-  $(BDB_LIBS) \
-  $(SQLITE_LIBS)
-
-if TARGET_WINDOWS
-chaucha_wallet_SOURCES += bitcoin-wallet-res.rc
-endif
-#
-
-# bitcoin-util binary #
-chaucha_util_SOURCES = bitcoin-util.cpp
-chaucha_util_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
-chaucha_util_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-chaucha_util_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS) $(PTHREAD_FLAGS)
-
-if TARGET_WINDOWS
-chaucha_util_SOURCES += bitcoin-util-res.rc
-endif
-
-chaucha_util_LDADD = \
-  $(LIBBITCOIN_COMMON) \
-  $(LIBBITCOIN_UTIL) \
-  $(LIBUNIVALUE) \
-  $(CRYPTO_LIBS) \
-  $(LIBBITCOIN_CONSENSUS) \
-  $(LIBBITCOIN_CRYPTO) \
-  $(LIBSECP256K1)
-#
-
-# bitcoin-chainstate binary #
-chaucha_chainstate_SOURCES = bitcoin-chainstate.cpp
-chaucha_chainstate_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(BOOST_CPPFLAGS)
-chaucha_chainstate_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-
-chaucha_chainstate_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(PTHREAD_FLAGS) $(LIBTOOL_APP_LDFLAGS) -static
-chaucha_chainstate_LDADD = $(LIBBITCOINKERNEL)
-
-# libtool is unable to calculate this indirect dependency, presumably because it's a subproject.
-# libsecp256k1 only needs to be linked in when libbitcoinkernel is static.
-chaucha_chainstate_LDADD += $(LIBSECP256K1)
 #
 
 # bitcoinkernel library #

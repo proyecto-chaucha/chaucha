@@ -7,10 +7,6 @@ src/chauchad
 src/chaucha-cli
 src/chaucha-gui
 src/chaucha-node
-src/chaucha-tx
-src/chaucha-util
-src/chaucha-chainstate
-src/chaucha-wallet
 src/test/fuzz/fuzz
 src/test/test_chaucha
 src/bench/bench_chaucha

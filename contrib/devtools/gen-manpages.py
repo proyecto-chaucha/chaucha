@@ -10,9 +10,6 @@ import tempfile
 BINARIES = [
 'src/chauchad',
 'src/chaucha-cli',
-'src/chaucha-tx',
-'src/chaucha-wallet',
-'src/chaucha-util',
 'src/qt/chaucha-qt',
 ]
 

@@ -371,10 +371,6 @@ bitcoin_test_clean : FORCE
 	rm -f $(CLEAN_BITCOIN_TEST) $(test_test_chaucha_OBJECTS) $(TEST_BINARY)
 
 check-local: $(BITCOIN_TESTS:.cpp=.cpp.test)
-if BUILD_BITCOIN_TX
-	@echo "Running test/util/test_runner.py..."
-	$(PYTHON) $(top_builddir)/test/util/test_runner.py
-endif
 	@echo "Running test/util/rpcauth-test.py..."
 	$(PYTHON) $(top_builddir)/test/util/rpcauth-test.py
 if TARGET_WINDOWS
