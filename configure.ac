@@ -625,6 +625,18 @@ fi
 
 CORE_CPPFLAGS="$CORE_CPPFLAGS -DHAVE_BUILD_INFO"
 
+AC_ARG_WITH([utils],
+  [AS_HELP_STRING([--with-utils],
+  [build bitcoin-cli (default=yes)])],
+  [build_bitcoin_utils=$withval],
+  [build_bitcoin_utils=yes])
+
+AC_ARG_ENABLE([util-cli],
+  [AS_HELP_STRING([--enable-util-cli],
+  [build bitcoin-cli])],
+  [build_bitcoin_cli=$enableval],
+  [build_bitcoin_cli=$build_bitcoin_utils])
+
 AC_ARG_WITH([libs],
   [AS_HELP_STRING([--with-libs],
   [build libraries (default=yes)])],
