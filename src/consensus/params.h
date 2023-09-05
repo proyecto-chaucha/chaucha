@@ -144,6 +144,12 @@ struct Params {
         } // no default case, so the compiler can warn about missing cases
         return std::numeric_limits<int>::max();
     }
+
+    /** DarkGravityWell v3 Fork Params - Humwerthuz @ 30/12/2017 **/
+    int nPowDGWHeight;
+
+    // Propuestas de Mejora para Chaucha
+    int PMC1;
 };
 
 } // namespace Consensus
