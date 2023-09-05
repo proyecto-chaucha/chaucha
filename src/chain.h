@@ -262,6 +262,11 @@ public:
         return *phashBlock;
     }
 
+    uint256 GetScryptHash() const
+    {
+        return GetBlockHeader().GetPoWScryptHash();
+    }
+
     /**
      * Check whether this block's and all previous blocks' transactions have been
      * downloaded (and stored to disk) at some point.
